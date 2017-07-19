@@ -24,4 +24,8 @@ class loginController extends Controller
     		return redirect('login')->with('thong bao','dang nhap khong thanh cong');
     	}
     }
+    public function getLogout(){
+        Auth::logout();
+        return redirect('login');
+    }
 }

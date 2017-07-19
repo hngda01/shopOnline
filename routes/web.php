@@ -19,7 +19,8 @@ Route::get('theloai',function(){
 });
 Route::get('login','loginController@getLogin');
 Route::post('login','loginController@postLogin');
-Route::group(['prefix'=>'admin'],function(){
+Route::get('logout','loginController@getLogout');
+Route::group(['prefix'=>'admin','middleware'=>'adminMiddleware'],function(){
 	Route::group(['prefix'=>'theloai'],function(){
 		Route::get('danhsach','TheLoaiController@getDanhSach');
 		Route::get('sua/{id}','TheLoaiController@getSua');

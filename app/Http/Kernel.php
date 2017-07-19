@@ -40,6 +40,8 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        'adminMiddleware'=>[\App\Http\Middleware\adminMiddleware::class,
+        ],
     ];
 
     /**
