@@ -48,7 +48,7 @@
                         @endif
 
                         <form role="form" action="login" method="POST">
-                            
+                            {{ csrf_field() }}
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>

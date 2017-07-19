@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 use App\TheLoai;
@@ -15,7 +15,36 @@ class TheLoaiController extends Controller
     public function getThem(){
     	return view('admin.theloai.them');
     }
-    public function getSua(){
-    	return view('admin.theloai.sua');
+    public function getSua($id){
+    	$theloai= TheLoai::find($id);
+        return view('admin.theloai.sua',['theloai'=>$theloai]);
+    }
+    public function postSua(Request $request,$id){
+        $theloai= Theloai::find($id);
+        $this->validate($request,[
+            'Ten'=>'required|min:3'
+            ],[
+            'Ten.required'=>'name is required',
+            'Ten.min'=>'min length: 2'
+            ]);
+        $theloai->Ten= $request->Ten;
+        $theloai->TenKhongDau= changeTitle($request->Ten);
+        $theloai->save();
+
+        return redirect('admin/theloai/sua/'.$id)->with('thong bao','da sua thanh cong');
+    }
+    public function postThem(Request $request){
+        $this->validate($request,[
+            'Ten'=>'required|min:3|max:100'
+            ],[
+            'Ten.required'=>'ban chua nhap ten',
+            'Ten.min'=>'min length: 3',
+            'Ten.max'=>'max length: 100'
+            ]);
+        $theloai= new TheLoai;
+        $theloai->Ten= $request->Ten;
+        $theloai->TenKhongDau= changeTitle($request->Ten);
+        $theloai->save();
+        return redirect('admin/theloai/them')->with('thong bao','da them the loai');
     }
 }

@@ -18,7 +18,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> {{$name}}</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> user name</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
